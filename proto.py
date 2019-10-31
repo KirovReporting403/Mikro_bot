@@ -10,3 +10,5 @@ stdin, stdout, stderr = client.exec_command("/system script run <<-- name of scr
 result = stdout.read().decode('utf-8').strip("\n")
 print(result)
 client.close()
+time.sleep(5)  
+print(Finish)
