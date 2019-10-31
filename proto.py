@@ -9,3 +9,4 @@ client.connect('<<--IP address or domain-->>', username='<<--mikrotik username--
 stdin, stdout, stderr = client.exec_command("/system script run <<-- name of script[dhcp client/info/ip public] -->>")
 result = stdout.read().decode('utf-8').strip("\n")
 print(result)
+client.close()
