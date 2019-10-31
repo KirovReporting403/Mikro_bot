@@ -1,0 +1,13 @@
+:do {/ip dhcp-server lease
+ :foreach i in=[find] do={
+ :put ("address=" . [get $i value-name=address] ."\t\t\t". " Status=". [get $i value-name=status] ."\t\t\t". " host-name=" . [get $i value-name=host-name] );
+ }
+} on-error={}
+
+
+/system resource 
+:put ([get platform]."\r\n"."Uptime ".[get uptime]."\r\n"."Cpu ".[get cpu-load]."%"."\r\n"."Mem ".[get total-memory]/1000 ."/".[get free-memory]/1000 ." MiB" . "\r\n" . "Version ".[get version]."\r\n" ."Last Login ".[/user get Humanz last-logged-in]);
+
+
+/interface
+:put ("Total Download ". [get ether1 rx-byte]/1000 ." Mb\r\n" . "total Upload ". [get ether1 tx-byte]/1000 . " Mb");
